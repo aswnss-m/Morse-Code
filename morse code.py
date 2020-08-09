@@ -39,6 +39,45 @@ import os #this import is to copy the final output into the clipboard so that we
 message = "" #this variable is used to store the output data
 run = 'y'
 
+class Morse:
+    def __init__(self,string,option):
+        self.string = string
+        self.option = option
+    def make():
+        for text in string.upper():  #Here the string is capitalized to suite the words in the above morse code dictionary : L40 - L65
+        if text == " ":
+            message = message + "  "
+        else:
+            if text.isnumeric(): #To differenciate the numbers from the charactor , i divided this encrytion between charactors and numbers to make the workload less (this way its more faster)
+            for y in morse_code_num:
+                if text == y:
+                    message = message + morse_code_num[y] + " "
+                else :
+                    for x in morse_code:
+                        if text == x:
+        message = message + morse_code[x] + " "
+        print("Morse Code : ",message)
+        print("\n\nThe Morse code have been copied to the clipboard !!")
+        os.system('echo' + message + '| clip') #this code is to copy the output message to the clipboard , an extra feature
+
+    def crack():
+        for word in words :
+            letters = word.split(" ")
+            for letter in letters:
+                for code in morse_code :
+                    if letter == morse_code[code]:
+                        message = message + code
+                for code in morse_code_num:
+                    if letter == morse_code_num[code]:
+                        message = message + code
+                        message = message + " "
+        print("Decoded message : ",message)
+        print("\n\nThe message have been copied to the clipboard !!")
+        os.system('echo' + message + '| clip')
+        time.sleep('10')
+
+
+
 while run == 'y':
     print("What do you want to do ?")
     print("1.Translate to Morse Code ")
@@ -48,21 +87,6 @@ while run == 'y':
         #down below is the code for creating morse code from string
         if option == '1' :
             string  = input("Enter the message : ")
-            for text in string.upper():  #Here the string is capitalized to suite the words in the above morse code dictionary : L40 - L65
-                if text == " ":
-                    message = message + "  "
-                else:
-                    if text.isnumeric(): #To differenciate the numbers from the charactor , i divided this encrytion between charactors and numbers to make the workload less (this way its more faster)
-                        for y in morse_code_num:
-                            if text == y:
-                                message = message + morse_code_num[y] + " "
-                    else :
-                        for x in morse_code:
-                            if text == x:
-                                message = message + morse_code[x] + " "
-            print("Morse Code : ",message)
-            print("\n\nThe Morse code have been copied to the clipboard !!")
-            os.system('echo' + message + '| clip') #this code is to copy the output message to the clipboard , an extra feature
 
 
         #given below is the code for decoding morse code into message (string)
@@ -72,20 +96,6 @@ while run == 'y':
             print ("Use \" \" (single space)to seperate each letter and \"  \" (double space)  to seperate words ") #prompt the user about the spacing they have to follow
             string  = input("Enter the morse code : ")
             words = string.split("  ")
-            for word in words :
-                letters = word.split(" ")
-                for letter in letters:
-                    for code in morse_code :
-                        if letter == morse_code[code]:
-                            message = message + code
-                    for code in morse_code_num:
-                        if letter == morse_code_num[code]:
-                            message = message + code
-                message = message + " "
-            print("Decoded message : ",message)
-            print("\n\nThe message have been copied to the clipboard !!")
-            os.system('echo' + message + '| clip')
-            time.sleep('10')
 
         run = input("\n\nDo you want to go again ?\nThis will overwrite the previous message in your clipboard ! (y/n) : ")
 
